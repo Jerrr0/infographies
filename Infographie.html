@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infographie: Réussir l'Épreuve E2 du BTS GPN</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+    <!-- Chosen Color Palette: Brilliant Blues (Professional & Vibrant) -->
+    <!-- Primary: #003F5C (Dark Blue) -->
+    <!-- Secondary: #366E9A (Medium Blue) -->
+    <!-- Accent 1: #6B9DC8 (Light Blue) -->
+    <!-- Accent 2: #A5CFF5 (Very Light Blue) -->
+    <!-- Background: #E1F3FF (Pale Blue BG) -->
+
+    <!-- 
+    Narrative Plan:
+    1. Title/Hook: "Infographie: Réussir l'Épreuve E2 du BTS GPN" - Hook with a key stat (30 mins, 4 capacities).
+    2. Section 1: Qu'est-ce que l'Épreuve E2? (Modalités) - Visualize the exam structure (time split, grading).
+    3. Section 2: Les 4 Piliers de l'Évaluation (Les Capacités) - Introduce the 4 'C2.x' capacities as the core KPIs. Use a Bar chart to show their equal weight.
+    4. Section 3: Bâtir son Projet (Le Concret - C2.2/C2.4) - Visualize the professional environment (structures/statuts) and the project lifecycle (flowchart).
+    5. Section 4: Le Cœur de la Démarche (L'Analyse - C2.1/C2.3) - Visualize the 4 indicators of C2.3 (analyse réflexive) using a Radar chart.
+    6. Section 5: Clés de la Réussite & Conclusion - Summarize the 3 keys from Module 1 (Discernement, Rigueur, Sincérité).
+    -->
+
+    <!-- 
+    Visualization Plan:
+    1. Exam Structure (Modalités): Goal: Inform. Visualization: Donut Chart (Chart.js). Justification: Shows the simple proportion of Presentation (10 min) vs. Questions (20 min). NO SVG.
+    2. Evaluation Structure (Grading): Goal: Compare. Visualization: Bar Chart (Chart.js). Justification: Compares the 4 'Capacités' (C2.1-C2.4) and shows their equal weight (/20 points each). NO SVG.
+    3. Environnement Pro (C2.2 Structures): Goal: Compare. Visualization: Pie Chart (Chart.js). Justification: Shows the composition/options for professional structures. NO SVG.
+    4. Project Lifecycle (C2.4): Goal: Organize (Process). Visualization: Flow Chart (HTML/CSS/Tailwind). Justification: Clearly shows the 4-step process. NO SVG / NO MERMAID JS.
+    5. Analyse Réflexive (C2.3): Goal: Compare. Visualization: Radar Chart (Chart.js). Justification: Perfect for showing performance/focus across the 4 indicators of C2.3. NO SVG.
+    6. Clés de la Réussite: Goal: Organize (List). Visualization: Styled HTML List (Tailwind). Justification: Presents the 3 final keywords clearly. NO SVG.
+    -->
+
+    <!-- NEITHER Mermaid JS NOR SVG were used in this file. All diagrams are built with HTML/CSS or Chart.js Canvas rendering. -->
+</head>
+<body class="bg-[#E1F3FF] text-[#003F5C]">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-6xl">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-[#003F5C] mb-4">Réussir l'Épreuve E2: Projet Personnel et Professionnel</h1>
+            <p class="text-xl text-[#366E9A]">Une infographie pour décrypter les 30 minutes et 4 capacités clés de votre oral en BTS GPN.</p>
+        </header>
+
+        <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <section class="bg-white rounded-lg shadow-lg p-6 md:col-span-2 lg:col-span-3">
+                <h2 class="text-2xl font-bold text-[#003F5C] mb-4">Section 1: Les Modalités de l'Épreuve E2</h2>
+                <p class="text-[#366E9A] mb-6">L'épreuve E2 est une soutenance orale de 30 minutes, conçue pour évaluer votre capacité à "Construire son projet personnel et professionnel". Elle est divisée en deux parties distinctes pour lesquelles un support numérique est **vivement conseillé**.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                    <div class="bg-[#E1F3FF] rounded-lg p-6 text-center shadow-inner">
+                        <div class="text-7xl font-bold text-[#003F5C]">30</div>
+                        <div class="text-2xl font-semibold text-[#366E9A]">MINUTES</div>
+                        <p class="text-[#003F5C] mt-2">Un support numérique (PPT, Prezi) est **vivement conseillé** mais non obligatoire.</p>
+                    </div>
+                    <div>
+                        <p class="text-[#366E9A] mb-4 text-center font-semibold">Répartition du temps :</p>
+                        <div class="w-full max-w-xs mx-auto h-64 md:h-72 relative">
+                            <canvas id="examTimeChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-white rounded-lg shadow-lg p-6 md:col-span-2 lg:col-span-3">
+                <h2 class="text-2xl font-bold text-[#003F5C] mb-4">Section 2: Les 4 Piliers de l'Évaluation (Capacités C2.x)</h2>
+                <p class="text-[#366E9A] mb-6">Votre note finale (/20) est basée sur une grille d'évaluation de 80 points, répartie équitablement entre quatre capacités intermédiaires. Chacune compte pour 20 points, soulignant leur importance égale dans votre parcours.</p>
+                <div class="w-full max-w-4xl mx-auto h-96 md:h-[450px] relative">
+                    <canvas id="evaluationBarChart"></canvas>
+                </div>
+            </section>
+
+            <section class="bg-white rounded-lg shadow-lg p-6 lg:col-span-2">
+                <h2 class="text-2xl font-bold text-[#003F5C] mb-4">Section 3: Bâtir son Projet Concret (C2.2 & C2.4)</h2>
+                <p class="text-[#366E9A] mb-6">Cette partie évalue votre capacité à vous projeter dans le monde du travail (C2.2) et à mener des actions concrètes (C2.4). Vous devez analyser l'écosystème GPN et maîtriser la méthodologie de projet.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="text-lg font-semibold text-[#003F5C] mb-3 text-center">C2.2: Diversité des Structures GPN (Exemple)</h3>
+                        <p class="text-sm text-[#366E9A] mb-4 text-center">Explorez les différentes voies possibles.</p>
+                        <div class="w-full max-w-xs mx-auto h-64 md:h-72 relative">
+                            <canvas id="structuresPieChart"></canvas>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-[#003F5C] mb-3 text-center">C2.4: Le Cycle de Vie d'un Projet</h3>
+                        <p class="text-sm text-[#366E9A] mb-4 text-center">Démontrez votre rigueur méthodologique.</p>
+                        <div class="flex flex-col space-y-2 items-center">
+                            <div class="w-full bg-[#E1F3FF] border-l-4 border-[#003F5C] p-3 rounded-r-lg shadow">
+                                <span class="font-bold text-[#003F5C]">1. Idéation</span>
+                                <p class="text-sm text-[#366E9A]">Définir les besoins, les problèmes et les parties prenantes.</p>
+                            </div>
+                            <div class="text-2xl text-[#003F5C]">⬇️</div>
+                            <div class="w-full bg-[#E1F3FF] border-l-4 border-[#366E9A] p-3 rounded-r-lg shadow">
+                                <span class="font-bold text-[#003F5C]">2. Rédaction</span>
+                                <p class="text-sm text-[#366E9A]">Documenter les objectifs, activités, ressources et livrables.</p>
+                            </div>
+                             <div class="text-2xl text-[#003F5C]">⬇️</div>
+                            <div class="w-full bg-[#E1F3FF] border-l-4 border-[#6B9DC8] p-3 rounded-r-lg shadow">
+                                <span class="font-bold text-[#003F5C]">3. Validation</span>
+                                <p class="text-sm text-[#366E9A]">Analyse critique, relecture et ajustements.</p>
+                            </div>
+                             <div class="text-2xl text-[#003F5C]">⬇️</div>
+                            <div class="w-full bg-[#E1F3FF] border-l-4 border-[#A5CFF5] p-3 rounded-r-lg shadow">
+                                <span class="font-bold text-[#003F5C]">4. Suivi & Évaluation</span>
+                                <p class="text-sm text-[#366E9A]">Mesurer les résultats avec des indicateurs et clôturer.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-white rounded-lg shadow-lg p-6 lg:row-span-2">
+                <h2 class="text-2xl font-bold text-[#003F5C] mb-4">Section 4: Le Cœur de la Démarche (C2.1 & C2.3)</h2>
+                <p class="text-[#366E9A] mb-6">Le jury évalue votre maturité. La capacité C2.1 (s'engager dans un mode de vie actif) et C2.3 (s'adapter) sont liées par votre capacité à mener une introspection honnête sur vos progrès.</p>
+                
+                <h3 class="text-lg font-semibold text-[#003F5C] mb-3">C2.3: Les 4 Indicateurs de l'Analyse Réflexive</h3>
+                <p class="text-[#366E9A] mb-6">Votre analyse réflexive est le pilier de la C2.3. Elle se mesure par votre capacité à évaluer votre propre parcours de manière critique à travers 4 indicateurs.</p>
+
+                <div class="w-full max-w-lg mx-auto h-80 md:h-96 relative">
+                    <canvas id="reflexiveRadarChart"></canvas>
+                </div>
+                <p class="text-sm text-center text-[#366E9A] mt-4">Ce graphique montre un exemple de profil d'auto-évaluation. Le vôtre sera unique et basé sur vos expériences.</p>
+            </section>
+
+            <section class="bg-white rounded-lg shadow-lg p-6 md:col-span-2 lg:col-span-2">
+                <h2 class="text-2xl font-bold text-[#003F5C] mb-4">Section 5: Les 3 Clés de la Réussite</h2>
+                <p class="text-[#366E9A] mb-6">Pour exceller à l'épreuve E2, le jury s'attend à ce que vous démontriez trois qualités fondamentales qui résument l'esprit de ces 4 capacités.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-[#E1F3FF] p-4 rounded-lg shadow-inner text-center">
+                        <div class="text-5xl mb-2">💡</div>
+                        <h4 class="text-xl font-bold text-[#003F5C]">Discernement</h4>
+                        <p class="text-sm text-[#366E9A]">Justifier vos choix (C2.1, C2.2) par une analyse honnête de vos aptitudes et du marché.</p>
+                    </div>
+                    <div class="bg-[#E1F3FF] p-4 rounded-lg shadow-inner text-center">
+                        <div class="text-5xl mb-2">📋</div>
+                        <h4 class="text-xl font-bold text-[#003F5C]">Rigueur</h4>
+                        <p class="text-sm text-[#366E9A]">Utiliser une méthodologie de projet structurée (planification, indicateurs - C2.4).</p>
+                    </div>
+                    <div class="bg-[#E1F3FF] p-4 rounded-lg shadow-inner text-center">
+                        <div class="text-5xl mb-2">🧠</div>
+                        <h4 class="text-xl font-bold text-[#003F5C]">Sincérité</h4>
+                        <p class="text-sm text-[#366E9A]">Prendre du recul sur vos succès et échecs pour ajuster votre trajectoire (C2.3).</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="text-center mt-12 text-[#366E9A] text-sm">
+            <p>Infographie basée sur les modules de préparation au BTS GPN. Conçue pour la valorisation et la gestion de la nature.</p>
+        </footer>
+    </div>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const MAX_LABEL_LENGTH = 16;
+            const CHART_COLORS = {
+                darkBlue: '#003F5C',
+                mediumBlue: '#366E9A',
+                lightBlue: '#6B9DC8',
+                paleBlue: '#A5CFF5',
+                bgBlue: 'rgba(54, 110, 154, 0.2)'
+            };
+
+            function wrapLabel(label) {
+                if (label.length <= MAX_LABEL_LENGTH) {
+                    return label;
+                }
+                const words = label.split(' ');
+                const lines = [];
+                let currentLine = '';
+                words.forEach(word => {
+                    if ((currentLine + word).length > MAX_LABEL_LENGTH && currentLine.length > 0) {
+                        lines.push(currentLine.trim());
+                        currentLine = word + ' ';
+                    } else {
+                        currentLine += word + ' ';
+                    }
+                });
+                lines.push(currentLine.trim());
+                return lines;
+            }
+
+            const tooltipTitleCallback = (tooltipItems) => {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                    return label.join(' ');
+                } else {
+                    return label;
+                }
+            };
+
+            const defaultPlugins = {
+                legend: {
+                    labels: {
+                        color: CHART_COLORS.darkBlue
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    }
+                }
+            };
+
+            const examTimeCtx = document.getElementById('examTimeChart').getContext('2d');
+            new Chart(examTimeCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Présentation', 'Échange avec le Jury'],
+                    datasets: [{
+                        data: [10, 20],
+                        backgroundColor: [CHART_COLORS.lightBlue, CHART_COLORS.darkBlue],
+                        borderColor: '#FFFFFF',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        ...defaultPlugins,
+                        legend: {
+                            position: 'bottom',
+                            labels: { color: CHART_COLORS.darkBlue }
+                        }
+                    }
+                }
+            });
+
+            const evaluationBarCtx = document.getElementById('evaluationBarChart').getContext('2d');
+            new Chart(evaluationBarCtx, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        wrapLabel("C2.1: S'engager dans un mode de vie actif et solidaire"),
+                        wrapLabel("C2.2: S'insérer dans un environnement professionnel"),
+                        wrapLabel("C2.3: S'adapter à des enjeux ou des contextes particuliers"),
+                        wrapLabel("C2.4: Conduire un projet de manière collaborative")
+                    ],
+                    datasets: [{
+                        label: 'Points sur la grille (/20)',
+                        data: [20, 20, 20, 20],
+                        backgroundColor: [CHART_COLORS.darkBlue, CHART_COLORS.mediumBlue, CHART_COLORS.lightBlue, CHART_COLORS.paleBlue],
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    plugins: {
+                        ...defaultPlugins,
+                        legend: { display: false }
+                    },
+                    scales: {
+                        x: {
+                            max: 20,
+                            grid: { color: '#e0e0e0' },
+                            ticks: { color: CHART_COLORS.darkBlue }
+                        },
+                        y: {
+                            grid: { display: false },
+                            ticks: { color: CHART_COLORS.darkBlue }
+                        }
+                    }
+                }
+            });
+
+            const structuresPieCtx = document.getElementById('structuresPieChart').getContext('2d');
+            new Chart(structuresPieCtx, {
+                type: 'pie',
+                data: {
+                    labels: [
+                        wrapLabel("Collectivités"),
+                        wrapLabel("Entreprises (Bureaux d'études)"),
+                        wrapLabel("Associations"),
+                        wrapLabel("Établissements Publics")
+                    ],
+                    datasets: [{
+                        data: [30, 25, 25, 20],
+                        backgroundColor: [CHART_COLORS.darkBlue, CHART_COLORS.mediumBlue, CHART_COLORS.lightBlue, CHART_COLORS.paleBlue],
+                        borderColor: '#FFFFFF',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        ...defaultPlugins,
+                        legend: {
+                            position: 'bottom',
+                            labels: { color: CHART_COLORS.darkBlue }
+                        }
+                    }
+                }
+            });
+
+            const reflexiveRadarCtx = document.getElementById('reflexiveRadarChart').getContext('2d');
+            new Chart(reflexiveRadarCtx, {
+                type: 'radar',
+                data: {
+                    labels: [
+                        wrapLabel("Ajustements des objectifs"),
+                        wrapLabel("Qualité de l'investissement"),
+                        wrapLabel("Évaluation de la réussite"),
+                        wrapLabel("Écart au projet initial")
+                    ],
+                    datasets: [{
+                        label: 'Profil Réflexif (Exemple)',
+                        data: [4, 5, 3, 4],
+                        backgroundColor: CHART_COLORS.bgBlue,
+                        borderColor: CHART_COLORS.mediumBlue,
+                        pointBackgroundColor: CHART_COLORS.mediumBlue,
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: CHART_COLORS.mediumBlue
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: defaultPlugins,
+                    scales: {
+                        r: {
+                            beginAtZero: true,
+                            max: 5,
+                            grid: { color: '#d1d5db' },
+                            pointLabels: {
+                                color: CHART_COLORS.darkBlue,
+                                font: { size: 12 }
+                            },
+                            ticks: {
+                                backdropColor: 'white',
+                                color: CHART_COLORS.mediumBlue,
+                                stepSize: 1
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
